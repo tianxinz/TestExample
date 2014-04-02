@@ -1,0 +1,28 @@
+/**
+ * 
+ * @author tianxinz
+ *
+ */
+
+public class TreeNode {
+
+	private String name;
+	
+	/**
+	 * Method: getName()
+	 * @return name of the TreeNode
+	 */
+	public String getName()
+	{
+		return name;
+	}
+	
+	/**
+	 * Method: setName()
+	 * @param TreeNode name
+	 */
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+}
