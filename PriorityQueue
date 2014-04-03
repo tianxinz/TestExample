@@ -1,0 +1,76 @@
+class Customer
+{
+	private int id;
+	private String name;
+	
+	public Customer(int i, String s)
+	{
+		this.id = i;
+		this.name = s;
+	}
+	
+	public int getId()
+	{
+		return id;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+}
+
+
+public class test7
+{
+	public static void main(String[] args)
+	{
+		Queue<Integer> integerPriorityQueue = new PriorityQueue<Integer>(7);
+		Random rand = new Random();
+		for(int i=0; i<7; i++)
+		{
+			integerPriorityQueue.add(new Integer(rand.nextInt(5)));
+		}
+	
+		for(int i=0; i<7; i++)
+		{
+			int in = integerPriorityQueue.poll();
+			System.out.println("random int:" + in);
+		}
+	
+		Queue<Customer> customerPriorityQueue = new PriorityQueue<Customer>(7,new CustomComparator());
+		addDataToQueue(customerPriorityQueue);
+		
+		pollDataFromQueue(customerPriorityQueue);
+	}
+	
+	private static void addDataToQueue(Queue<Customer> customerPriorityQueue)
+	{
+		Random rand = new Random();
+		for(int i=0; i<7; i++)
+		{
+			int id = rand.nextInt(100);
+			customerPriorityQueue.add(new Customer(id, "aa" + id));
+		}
+	}
+	
+	private static void pollDataFromQueue(Queue<Customer> customerPriorityQueue)
+	{
+		while(!customerPriorityQueue.isEmpty())
+		{
+			Customer cust = customerPriorityQueue.poll();
+			System.out.println("Processing Customer with ID = " + cust.getId());
+		}
+	}
+
+}
+
+
+
+class CustomComparator implements Comparator<Customer>
+{
+	public int compare(Customer a, Customer b)
+	{
+		return (int) (a.getId() - b.getId());
+	}
+}
